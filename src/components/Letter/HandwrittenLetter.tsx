@@ -88,7 +88,7 @@ export const HandwrittenLetter: React.FC<HandwrittenLetterProps> = ({
         {/* Hoa văn góc lá thư */}
         <div className="absolute top-3 right-4 flex items-center gap-1 text-[11px] font-sans font-medium text-[#E05780]/70 select-none">
           <Sparkles className="h-3 w-3 text-[#E05780]" />
-          <span>20 / 10 / 2026</span>
+          <span>29 / 11 / 2026</span>
         </div>
 
         {/* PHẦN 1: LỜI MỞ ĐẦU */}

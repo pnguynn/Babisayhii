@@ -80,19 +80,20 @@ export interface WebsiteConfig {
 
 export const websiteConfig: WebsiteConfig = {
   // =========================================================================
-  // 1. LÁ THƯ TÌNH CẢM 20/10 (3 PHẦN ĐỘC LẬP)
+  // 1. LÁ THƯ TÌNH CẢM Happy birthday Babisayhii (3 PHẦN ĐỘC LẬP)
   // =========================================================================
   letter: {
-    greeting: "Gửi đến người anh thương,",
+    greeting: "Gửi đến cục dànggg của anhh,",
     body: [
-      "Hello ngừi đẹp nhó — Hôm nay sẽ là 1 ngày vui của em nên anh muốn gửi tới em đôi lời",
-      "Đầu tiên là anh muốn gửi lời xin lỗi siêu siêu chân thành đến em luôn, vì dạo gần đây đã làm em buồn ơi là buồn rất nhiều. Anh xin lỗi em nha, thiệt ra là anh không bao giờ cố ý làm em buồn đâu nhưng mà chắc tại anh bị điên điên khùng khùng đỏ chứ nỏ bao giờ muốn em buồn cạ. Anh đã lỡ làm em buồn rứa rồi nên anh sẽ cố gắng khắc phục, không như thế nữa, anh sẽ đền bù cho em thiệt thiệt nhiều luông để em có thể vui vẻ hạnh phúc bù lại những ngày khót lót huhu i.",
-      "Và điều tiếp theo là anh muốn cảm ơn em i, vì anh đã làm như rứa rồi mà em vẫn ở bên tha thứ, iu thưn anh nhiều nhiều i. Cảm thấy may mắn lắm đỏ, tự nhiên có người siêu siêu dễ thương xinh đẹp yêu thương mình mà còn tha thứ cho mình nhiều i rứa, siêu siêu cảm ơn em luông.",
-      "Điều cuối cùng là anh sẽ cố gắng để chúng ta sẽ hạnh phúc 10 ngàn năm luông, không cho em buồn nhiều rứa nữa, yêu thương và bù đắp cho em nhiều nhiều luông và hơn hết là sẽ đồng hành cùng hành 10 ngàn năm nữa. Yêu thưn em lắm đỏ."
+      "Hello cục dàng nhaa — Hôm nay là 1 ngày vui của em nên anh muốn gửi đến em đôi lời",
+      "Đầu tiên là anh muốn chúc mừng sinh nhật cục dànggg của anh nè, chúc em ngày càng xinh đẹp hơn, học giỏi hơn, thành công trên con đường mà em đã chọn và mãi mãi hạnh phúc nhaaa❤️.",
+      "Và điều tiếp theo là đây là món quà trên bề mặt tinh thần vì mình đang yêu xa nên anh chỉ tặng bánh sinh nhật và bức thư này của anh thôi à, hy vọng là em sẽ thích và đỡ tủi thân trong ngày trọng đại này nha, vì hôm nay là ngày mà công chúa của anh ra đời á.",
+      "Điều cuối cùng là anh sẽ cố gắng để chúng ta bên cạnh nhau sớm nhất có thể, để đươc quan tâm và chăm sóc em. Thời gian này không có anh ở bên cạnh nên tất cả mọi thứ em đều phải làm một mình. Vợ iuu của anh là giỏi nhất luôn❤️. Chúc cục dànggg của anh có một ngày sinh nhật thật là hạnh phúc và trọn vẹn nha. Mong là chúng ta sẽ gặp lại nhau sớm.",
+      "À còn nữa, vì đây là món quà tinh thần anh chỉ làm tay cho em thôi, còn quà sinh nhật của em anh sẽ ship qua sau nhennn."
     ],
     signature: {
-      closing: "Thương em,",
-      sender: "Sẽ luôn dành cho em những điều dịu dàng nhất."
+      closing: "Mãi thương em,",
+      sender: "Anh sẽ luôn yêu thương em những gì mà anh có và sẽ luôn dành cho em những điều dịu dàng nhất🌻"
     }
   },
 
@@ -145,7 +146,7 @@ export const websiteConfig: WebsiteConfig = {
   // 3. NHẠC NỀN (NƠI NÀY CÓ ANH)
   // =========================================================================
   audio: {
-    songTitle: 'Nơi Này Có Anh',
+    songTitle: 'Em',
     musicUrl: asset('audio/music.mp3'),
     defaultVolume: 0.65,
     loop: true
@@ -156,7 +157,7 @@ export const websiteConfig: WebsiteConfig = {
   // =========================================================================
   finalScene: {
     walkingCharacterImage: asset('images/avatar.jpg'),
-    walkingGreetingText: 'Chúc em 20/10 thật hạnh phúc! 💐',
+    walkingGreetingText: 'Thươngggg💐',
     finalImageUrl: asset('images/final.jpg')
   },
 
@@ -166,11 +167,11 @@ export const websiteConfig: WebsiteConfig = {
   intro: {
     title: 'Gửi Em Một Món Quà Nhỏ',
     initialButtonText: 'Bấm để đọc',
-    firstConfirmText: 'Bạn có chắc muốn đọc không?',
-    secondConfirmQuestion: 'Bạn suy nghĩ kĩ rồi chứ?',
+    firstConfirmText: 'Em có chắc muốn đọc không?',
+    secondConfirmQuestion: 'Em suy nghĩ kĩ chưa?',
     buttonYesText: 'Rồi',
     buttonNoText: 'Chưa',
-    noTeaseMessage: 'Thôi đừng dối lòng, đọc lời yêu thương tôi gửi gắm nhé.',
+    noTeaseMessage: 'Thôi đừng dối lòng, đọc lời yêu thương anh gửi gắm nha.',
     readDoneButtonText: 'Em đã đọc xong rồi'
   },
 
