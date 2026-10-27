@@ -1,0 +1,165 @@
+
+.birthday-wish {
+  position: relative;
+  z-index: 35;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: min(100% - 32px, 420px);
+  margin: 40px auto;
+  padding: 28px 18px;
+  border: 1px solid #ffd3e1;
+  border-radius: 28px;
+  background: rgba(255, 248, 250, 0.96);
+  box-shadow: 0 12px 35px rgba(200, 105, 145, 0.15);
+  text-align: center;
+}
+
+.birthday-title {
+  margin: 0;
+  color: #d94f83;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.birthday-subtitle {
+  margin: 0;
+  color: #9d6a7e;
+  font-size: 14px;
+}
+
+.birthday-cake {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 230px;
+  height: 190px;
+  margin-top: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.birthday-cake:hover {
+  transform: translateY(-5px) scale(1.03);
+}
+
+.cake-candles {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 18px;
+  height: 50px;
+  align-items: flex-end;
+}
+
+.candle {
+  position: relative;
+  width: 10px;
+  height: 38px;
+  border-radius: 4px 4px 2px 2px;
+  background: repeating-linear-gradient(
+    135deg,
+    #fff 0 5px,
+    #ff8fb7 5px 9px
+  );
+}
+
+.flame {
+  position: absolute;
+  top: -17px;
+  left: 2px;
+  width: 7px;
+  height: 14px;
+  border-radius: 60% 40% 60% 40%;
+  background: #ffd166;
+  box-shadow: 0 0 13px #ffbd59;
+  animation: candle-flicker 0.7s infinite alternate;
+}
+
+.cake-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 190px;
+  height: 30px;
+  margin-top: -2px;
+  border-radius: 50%;
+  border: 2px solid #ffb5ce;
+  background: #fff0f5;
+  z-index: 1;
+}
+
+.cake-heart {
+  color: #e75b91;
+  font-size: 22px;
+}
+
+.cake-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 185px;
+  height: 70px;
+  margin-top: -5px;
+  border-radius: 8px 8px 18px 18px;
+  background: linear-gradient(180deg, #ffc4d8, #ff9fbe);
+  color: #a8446d;
+  font-size: 18px;
+  font-weight: 800;
+  box-shadow: inset 0 -9px 0 rgba(231, 91, 145, 0.12);
+}
+
+.cake-plate {
+  width: 220px;
+  height: 16px;
+  margin-top: -1px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #ffd3e1;
+  box-shadow: 0 5px 10px rgba(180, 90, 125, 0.12);
+}
+
+.wish-message {
+  margin: 0;
+  color: #c44f7d;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.wish-button {
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 30px;
+  background: linear-gradient(120deg, #e84e87, #f6a3bf);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 5px 14px rgba(216, 79, 131, 0.2);
+}
+
+.wish-button:disabled {
+  opacity: 0.85;
+  cursor: default;
+}
+
+@keyframes candle-flicker {
+  from {
+    transform: scale(1) rotate(-5deg);
+  }
+  to {
+    transform: scale(1.12) rotate(5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flame {
+    animation: none;
+  }
+}

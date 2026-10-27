@@ -1,0 +1,6 @@
+{
+  "name": "Món Quà Sinh Nhật Dành Riêng Cho Em",
+  "description": "Website Happy Birthday lãng mạn với phong thư 3D tương tác, hoa nở, ảnh kỷ niệm và kết thúc bất ngờ.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
