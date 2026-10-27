@@ -93,4 +93,3 @@ export default function MatrixIntro({ onContinue }: MatrixIntroProps) {
     </main>
   );
 }
-```
