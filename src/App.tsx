@@ -1,10 +1,14 @@
+
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-
 import React, { useState } from 'react';
+import PhotoMemoryIntro from './components/PhotoMemoryIntro';
+import MatrixIntro from './components/MatrixIntro';
 import { Envelope3D } from './components/Envelope/Envelope3D';
+import PolaroidCard from './components/PolaroidCard';
+import BirthdayWish from './components/BirthdayWish';
 import { HandwrittenLetter } from './components/Letter/HandwrittenLetter';
 import { FlowerPetalsCanvas } from './components/Flowers/FlowerPetalsCanvas';
 import { FloatingMediaGallery } from './components/MediaGallery/FloatingMediaGallery';
@@ -13,72 +17,126 @@ import { EndingVortexScene } from './components/EndingScene/EndingVortexScene';
 import { AudioToggle } from './components/AudioControl/AudioToggle';
 import { MediaItem } from './config/websiteConfig';
 
-type AppFlowState = 'envelope' | 'reading' | 'ending_vortex';
+type AppFlowState =
+  | 'matrix'
+  | 'intro'
+  | 'envelope'
+  | 'reading'
+  | 'ending_vortex';
 
 export default function App() {
-  const [flowState, setFlowState] = useState<AppFlowState>('envelope');
-  const [selectedMedia, setSelectedMedia] = useState<MediaItem | null>(null);
+  const [flowState, setFlowState] =
+    useState<AppFlowState>('matrix');
 
-  // Khi phong thư mở nắp và hoa nở hoàn tất -> chuyển sang đọc thư & ngắm ảnh rơi
+  const [selectedMedia, setSelectedMedia] =
+    useState<MediaItem | null>(null);
+
+  // Từ màn hình dây ảnh chuyển sang phong bì
+  const handleOpenIntro = () => {
+    setFlowState('envelope');
+  };
+
+  // Khi phong thư mở hoàn tất, chuyển sang đọc thư
   const handleEnvelopeOpenComplete = () => {
     setFlowState('reading');
   };
 
-  // Khi người dùng cuộn hết thư và nhấn "Em đã đọc xong rồi":
-  // Các hiệu ứng trước đó biến mất ngay, màn hình chuyển sang trắng và kích hoạt hoạt hình cô gái bước đi
+  // Khi đọc thư xong, chuyển sang màn hình kết thúc
   const handleReadDone = () => {
     setFlowState('ending_vortex');
   };
 
-  // Khởi động lại từ đầu nếu người xem muốn trải nghiệm lại
+  // Khởi động lại từ màn hình dây ảnh
   const handleRestart = () => {
-    setFlowState('envelope');
+    setFlowState('intro');
     setSelectedMedia(null);
   };
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-[#FFF6F0] text-[#704858] font-sans">
-      {/* Nút bật/tắt nhạc nền luôn sẵn sàng ở góc trên */}
+
+      {/* Nhạc nền */}
       <AudioToggle />
 
-      {/* Hiệu ứng cánh hoa, hướng dương, hoa hồng, cẩm tú cầu và trái tim rơi */}
-      {flowState !== 'ending_vortex' && <FlowerPetalsCanvas />}
+      {/* Hiệu ứng hoa và cánh hoa */}
+     {flowState !== 'ending_vortex' &&
+  flowState !== 'intro' &&
+  flowState !== 'matrix' && (
+    <FlowerPetalsCanvas />
+  )}
 
-      {/* GIAI ĐOẠN 1 & 2: MÀN HÌNH PHONG THƯ 3D, HOA NỞ RỘ VÀ BƯỚC XÁC NHẬN */}
+      {/* TRANG MỞ ĐẦU MATRIX: TÊN, NGÀY SINH VÀ HAPPY 23+ */}
+      {flowState === 'matrix' && (
+        <MatrixIntro onContinue={() => setFlowState('intro')} />
+      )}
+
+      {/* MÀN HÌNH ĐẦU TIÊN: DÂY ẢNH VÀ ĐÈN VÀNG */}
+      {flowState === 'intro' && (
+        <PhotoMemoryIntro
+          onOpenLetter={handleOpenIntro}
+        />
+      )}
+
+      {/* MÀN HÌNH PHONG BÌ 3D */}
       {flowState === 'envelope' && (
-        <main className="relative z-20 flex min-h-screen flex-col items-center justify-center">
-          <Envelope3D onOpenComplete={handleEnvelopeOpenComplete} />
+        <main className="relative z-20 flex min-h-screen w-full max-w-none flex-col items-center justify-center p-0">
+          <Envelope3D
+            onOpenComplete={handleEnvelopeOpenComplete}
+          />
         </main>
       )}
 
-      {/* GIAI ĐOẠN 3, 4, 5, 6: LÁ THƯ VIẾT TAY & ẢNH/VIDEO RƠI 3D CHẬM RÃI */}
+      {/* MÀN HÌNH ĐỌC THƯ VÀ XEM KỶ NIỆM */}
       {flowState === 'reading' && (
         <main className="relative z-20 min-h-screen w-full animate-fade-in">
-          {/* Ảnh và video kỷ niệm rơi từ trên xuống đáy màn hình với hiệu ứng 3D */}
+
           <FloatingMediaGallery
             onSelectItem={(item) => setSelectedMedia(item)}
           />
 
-          {/* Lá thư tay viết riêng cho ngày 20/10, người nhận thoải mái lướt đọc */}
+          {/* ẢNH POLAROID */}
+          <section className="relative z-30 flex flex-col items-center gap-4 px-4 pt-8">
+            <h2 className="text-center text-xl font-semibold text-[#a14f70]">
+              Một chút kỷ niệm của chúng mình 💗
+            </h2>
+
+            <PolaroidCard
+              image={`${import.meta.env.BASE_URL}images/p17.jpg`}
+              date="2024.10.25 ✨"
+              message="Anh yêu Em 💕"
+              alt="Ảnh kỷ niệm của chúng mình"
+            />
+
+            <p className="text-sm text-[#a14f70]">
+              Chạm vào ảnh để lật xem lời nhắn 💌
+            </p>
+          </section>
+
+          {/* BÁNH SINH NHẬT VÀ LỜI CHÚC */}
+          <BirthdayWish />
+
+          {/* LÁ THƯ VIẾT TAY */}
           <div className="pt-8 sm:pt-12">
             <HandwrittenLetter
               onReadDone={handleReadDone}
               isEndingInProgress={false}
             />
           </div>
+
         </main>
       )}
 
-      {/* GIAI ĐOẠN 7 & 8: MÀN HÌNH TRẮNG, CÔ GÁI ĐI QUA HOA NỞ THEO CHÂN, CHẠY VỀ TÂM VÀ HIỆN ẢNH */}
+      {/* MÀN HÌNH KẾT THÚC */}
       {flowState === 'ending_vortex' && (
         <EndingVortexScene onRestart={handleRestart} />
       )}
 
-      {/* MODAL PHÓNG TO ẢNH HOẶC VIDEO KHI CHẠM VÀO */}
+      {/* MODAL XEM ẢNH HOẶC VIDEO */}
       <MediaViewerModal
         item={selectedMedia}
         onClose={() => setSelectedMedia(null)}
       />
+
     </div>
   );
 }

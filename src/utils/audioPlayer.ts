@@ -16,9 +16,14 @@ class RomanticAudioController {
   private isUsingSynthFallback: boolean = false;
   private subscribers: Set<(playing: boolean) => void> = new Set();
 
-  constructor() {
-    // Không tự động phát ngay để tuân thủ chính sách autoplay của trình duyệt
+ constructor() {
+  // Thử tự phát nhạc khi website được mở
+  if (typeof window !== 'undefined') {
+    window.addEventListener('load', () => {
+      this.play();
+    });
   }
+}
 
   public subscribe(callback: (playing: boolean) => void): () => void {
     this.subscribers.add(callback);

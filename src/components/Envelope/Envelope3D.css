@@ -1,0 +1,569 @@
+
+/* ==========================================
+   ENVELOPE 3D - ROMANTIC CINEMATIC THEME
+   ========================================== */
+
+.envelope-scene {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start !important;
+  padding: 0 16px !important;
+
+  background:
+    radial-gradient(ellipse at 2% 10%,
+      rgba(255, 155, 75, 0.20), transparent 26%),
+    radial-gradient(ellipse at 98% 12%,
+      rgba(255, 139, 65, 0.19), transparent 28%),
+    radial-gradient(ellipse at 0% 100%,
+      rgba(255, 115, 67, 0.17), transparent 32%),
+    radial-gradient(ellipse at 100% 100%,
+      rgba(255, 144, 71, 0.18), transparent 30%),
+    radial-gradient(ellipse at 50% 45%,
+      rgba(110, 43, 39, 0.32), transparent 56%),
+    linear-gradient(145deg, #170c0a 0%, #321710 48%, #12090a 100%);
+}
+
+/* Lớp ánh sáng và bóng tối */
+.envelope-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(ellipse at 50% 78%,
+      rgba(255, 151, 91, 0.12), transparent 38%),
+    radial-gradient(ellipse at 5% 80%,
+      rgba(255, 176, 95, 0.08), transparent 35%),
+    radial-gradient(ellipse at 95% 82%,
+      rgba(255, 133, 70, 0.10), transparent 32%),
+    linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.04),
+      transparent 45%,
+      rgba(0, 0, 0, 0.20));
+}
+
+/* Dây đèn cong phía trên */
+.envelope-scene::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  top: -50px;
+  left: -5%;
+  width: 110%;
+  height: 200px;
+
+  border-bottom: 2px solid rgba(255, 197, 123, 0.42);
+  border-radius: 0 0 48% 48%;
+
+  filter:
+    drop-shadow(0 0 5px rgba(255, 180, 85, 0.45))
+    drop-shadow(0 0 14px rgba(255, 133, 59, 0.20));
+}
+
+/* ==========================================
+   FAIRY LIGHTS - DÂY ĐÈN VÀNG
+   ========================================== */
+
+.fairy-glow {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 210px;
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(circle,
+      #fff9d9 0 2px,
+      #ffd98b 3px,
+      rgba(255, 178, 78, 0.48) 5px,
+      transparent 12px),
+    radial-gradient(circle,
+      #fff0bc 0 1.5px,
+      #ffbd64 3px,
+      rgba(255, 160, 62, 0.38) 6px,
+      transparent 13px),
+    radial-gradient(circle,
+      #fff5d5 0 2px,
+      rgba(255, 190, 102, 0.42) 5px,
+      transparent 11px);
+
+  background-size: 145px 80px, 190px 100px, 230px 120px;
+  background-position: 0 20px, 60px 70px, 110px 5px;
+  background-repeat: repeat-x;
+
+  animation: warm-lights 3s ease-in-out infinite alternate;
+}
+
+@keyframes warm-lights {
+  from {
+    opacity: 0.72;
+    filter: brightness(0.85)
+      drop-shadow(0 0 5px rgba(255, 182, 87, 0.45));
+  }
+
+  to {
+    opacity: 1;
+    filter: brightness(1.25)
+      drop-shadow(0 0 12px rgba(255, 187, 91, 0.85));
+  }
+}
+
+/* Hoa nhỏ ở khu vực đèn */
+.envelope-scene > .fairy-glow::before {
+  content: "✿";
+  position: absolute;
+  top: 105px;
+  left: 12%;
+  color: #f5a0a8;
+  font-size: 25px;
+
+  text-shadow:
+    15vw 85px 0 #e88991,
+    15vw 85px 8px rgba(255, 143, 157, 0.7),
+    44vw 35px 0 #f7bd64,
+    44vw 35px 8px rgba(255, 194, 106, 0.7),
+    67vw 115px 0 #ef8c9d,
+    67vw 115px 8px rgba(255, 143, 157, 0.7);
+
+  animation: flower-sway 5s ease-in-out infinite alternate;
+}
+
+.envelope-scene > .fairy-glow::after {
+  content: "✿";
+  position: absolute;
+  top: 125px;
+  right: 12%;
+  color: #f7c16f;
+  font-size: 20px;
+
+  text-shadow:
+    -18vw 110px 0 #e88991,
+    -18vw 110px 8px rgba(255, 143, 157, 0.7),
+    -40vw 30px 0 #f5a0a8,
+    -40vw 30px 8px rgba(255, 143, 157, 0.7);
+
+  animation: flower-sway 6s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes flower-sway {
+  from {
+    transform: translateY(0) rotate(-8deg);
+  }
+
+  to {
+    transform: translateY(12px) rotate(10deg);
+  }
+}
+
+/* ==========================================
+   POLAROID - ẢNH KỶ NIỆM HAI GÓC
+   ========================================== */
+
+.envelope-polaroids {
+  position: absolute;
+  z-index: 3;
+  top: 105px;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding: 0 clamp(18px, 6vw, 90px);
+  pointer-events: none;
+}
+
+.envelope-polaroid {
+  width: clamp(115px, 17vw, 190px);
+  padding: 9px 9px 30px;
+  background: #fff8ef;
+  border-radius: 3px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(255, 206, 146, 0.13);
+
+  animation: polaroid-float 4s ease-in-out infinite;
+}
+
+.envelope-polaroid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: #e8d9d0;
+}
+
+.envelope-polaroid span {
+  display: block;
+  margin-top: 8px;
+  color: #704858;
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: clamp(9px, 1.1vw, 12px);
+  font-style: italic;
+}
+
+.polaroid-left {
+  transform: rotate(-10deg);
+}
+
+.polaroid-right {
+  transform: rotate(9deg);
+  animation-delay: -2s;
+}
+
+@keyframes polaroid-float {
+  0%, 100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -8px;
+  }
+}
+
+/* ==========================================
+   CÁNH HOA BAY
+   ========================================== */
+
+.envelope-scene .perspective-1000::before {
+  content: "";
+  position: fixed;
+  top: -25px;
+  left: 12%;
+  z-index: 6;
+
+  width: 12px;
+  height: 18px;
+  border-radius: 80% 15% 75% 25%;
+
+  background: linear-gradient(135deg, #ffc0cb, #e85c86);
+
+  box-shadow:
+    22vw 45vh 0 -2px #f6a0b5,
+    48vw 15vh 0 -3px #ffc4ce,
+    72vw 55vh 0 -1px #e87a99,
+    82vw 25vh 0 -3px #ffc0cb,
+    35vw 72vh 0 -2px #e98ba5,
+    60vw 88vh 0 -3px #ffc4ce;
+
+  opacity: 0.85;
+  pointer-events: none;
+  animation: petals-fall 12s linear infinite;
+}
+
+@keyframes petals-fall {
+  0% {
+    transform: translate3d(0, -30px, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(35px, 50vh, 0) rotate(220deg);
+  }
+
+  100% {
+    transform: translate3d(-25px, 105vh, 0) rotate(500deg);
+  }
+}
+
+/* ==========================================
+   PHONG THƯ 3D - ÁNH SÁNG ẤM
+   ========================================== */
+
+.perspective-1000 {
+  position: relative;
+  z-index: 4;
+  perspective: 1000px;
+}
+
+.envelope-shadow {
+  box-shadow:
+    0 0 8px rgba(255, 197, 161, 0.65),
+    0 0 24px rgba(255, 146, 125, 0.36),
+    0 14px 40px rgba(0, 0, 0, 0.35),
+    0 0 70px rgba(255, 164, 125, 0.13);
+}
+
+/* ==========================================
+   BỐ CỤC PHONG THƯ VÀ NÚT BẤM
+   ========================================== */
+
+/* Đặt phong thư phía trên trung tâm màn hình */
+.envelope-scene > .perspective-1000 {
+  margin-top: clamp(165px, 22vh, 210px) !important;
+  margin-bottom: 0 !important;
+}
+
+/* Đặt nút đọc thư gần phong thư hơn */
+.envelope-scene > .mt-8 {
+  position: relative;
+  z-index: 5;
+  margin-top: clamp(55px, 9vh, 85px) !important;
+}
+
+.envelope-scene > .mt-8 button {
+  box-shadow:
+    0 5px 24px rgba(232, 91, 135, 0.22),
+    0 0 20px rgba(255, 169, 153, 0.10);
+}
+
+/* Vùng sáng khuếch tán phía sau nút */
+.envelope-scene > .mt-8::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  width: min(90vw, 650px);
+  height: 180px;
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(
+    ellipse,
+    rgba(255, 143, 92, 0.15),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+/* ==========================================
+   HOA TRANG TRÍ HAI GÓC DƯỚI
+   ========================================== */
+
+.envelope-scene {
+  --petal-pink: rgba(255, 139, 166, 0.85);
+}
+
+.envelope-scene > .fairy-glow {
+  overflow: visible;
+}
+
+.envelope-scene .fairy-glow {
+  /* Giữ dây đèn, thêm sắc vàng ấm */
+  filter: drop-shadow(0 0 7px rgba(255, 190, 100, 0.25));
+}
+
+/* Hoa bên trái */
+.envelope-scene > .fairy-glow::before {
+  content: "✿  ❀  ✿";
+  position: fixed;
+  left: 10px;
+  bottom: 18px;
+  top: auto;
+  color: #f5a0a8;
+  font-size: clamp(18px, 3vw, 34px);
+  letter-spacing: 8px;
+  text-shadow: 0 0 14px rgba(255, 143, 157, 0.65);
+  pointer-events: none;
+}
+
+/* Hoa bên phải */
+.envelope-scene > .fairy-glow::after {
+  content: "❀  ✿  ❀";
+  position: fixed;
+  right: 10px;
+  bottom: 22px;
+  top: auto;
+  color: #f3b4a5;
+  font-size: clamp(18px, 3vw, 34px);
+  letter-spacing: 8px;
+  text-shadow: 0 0 14px rgba(255, 143, 157, 0.65);
+  pointer-events: none;
+}
+
+/* ==========================================
+   RESPONSIVE - ĐIỆN THOẠI
+   ========================================== */
+
+@media (max-width: 600px) {
+  .envelope-polaroids {
+    top: 75px;
+    padding: 0 12px;
+  }
+
+  .envelope-polaroid {
+    width: clamp(90px, 27vw, 125px);
+    padding: 6px 6px 23px;
+  }
+
+  .envelope-polaroid span {
+    margin-top: 5px;
+    font-size: 9px;
+  }
+
+  .envelope-scene > .perspective-1000 {
+    margin-top: 150px !important;
+  }
+
+  .envelope-scene > .mt-8 {
+    margin-top: 48px !important;
+  }
+
+  .envelope-scene::after {
+    height: 150px;
+  }
+
+  .fairy-glow {
+    height: 170px;
+  }
+
+  .envelope-scene > .fairy-glow::before,
+  .envelope-scene > .fairy-glow::after {
+    font-size: 17px;
+    letter-spacing: 4px;
+  }
+}
+
+/* =================================
+   TRANG TRÍ KHOẢNG TRỐNG PHÍA DƯỚI
+   ================================= */
+
+/* Ánh sáng màu cam hồng lan ở đáy màn hình */
+.envelope-scene {
+  background:
+    radial-gradient(
+      ellipse at 50% 88%,
+      rgba(255, 130, 100, 0.18),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 10% 100%,
+      rgba(220, 103, 96, 0.18),
+      transparent 30%
+    ),
+    radial-gradient(
+      ellipse at 90% 100%,
+      rgba(255, 170, 100, 0.15),
+      transparent 30%
+    ),
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(110, 43, 39, 0.25),
+      transparent 55%
+    ),
+    linear-gradient(145deg, #170c0a, #321710 48%, #12090a);
+}
+
+/* Vùng sáng mềm phía sau nút đọc thư */
+.envelope-scene > .mt-8 {
+  isolation: isolate;
+}
+
+.envelope-scene > .mt-8::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: min(90vw, 620px);
+  height: 200px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(255, 149, 125, 0.18),
+    rgba(255, 174, 113, 0.06) 45%,
+    transparent 72%
+  );
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+/* Hoa ở góc dưới trái */
+.envelope-scene::marker {
+  content: none;
+}
+
+.envelope-scene > .fairy-glow {
+  overflow: visible;
+}
+
+/* Các cánh hoa nhỏ nằm ở phần dưới */
+.envelope-scene .perspective-1000::after {
+  content: "✿";
+  position: fixed;
+  z-index: 2;
+  left: 8%;
+  bottom: 9%;
+  color: #f6a0ad;
+  font-size: 30px;
+  text-shadow:
+    0 0 8px rgba(255, 143, 157, 0.8),
+    25px 28px 0 #e98b9e,
+    25px 28px 10px rgba(255, 143, 157, 0.6),
+    70px 12px 0 #f7c16f,
+    70px 12px 10px rgba(255, 193, 111, 0.5);
+  pointer-events: none;
+  animation: bottom-flower-float 5s ease-in-out infinite alternate;
+}
+
+/* Hoa trang trí góc dưới phải */
+.envelope-scene > .mt-8::after {
+  content: "❀  ✿";
+  position: fixed;
+  z-index: 2;
+  right: 3%;
+  bottom: 7%;
+  color: #f5a0ad;
+  font-size: clamp(22px, 3vw, 38px);
+  letter-spacing: 8px;
+  text-shadow:
+    0 0 10px rgba(255, 143, 157, 0.7),
+    -25px 20px 0 rgba(245, 177, 111, 0.9),
+    -25px 20px 10px rgba(255, 193, 111, 0.5);
+  pointer-events: none;
+  animation: bottom-flower-float 6s ease-in-out infinite alternate-reverse;
+}
+
+/* Hoa trang trí góc dưới trái */
+.envelope-scene > .mt-8::before {
+  content: "❀  ✿";
+  position: fixed;
+  z-index: 2;
+  left: 3%;
+  bottom: 7%;
+  color: #f5a0ad;
+  font-size: clamp(22px, 3vw, 38px);
+  letter-spacing: 8px;
+  text-shadow:
+    0 0 10px rgba(255, 143, 157, 0.7),
+    25px 20px 0 rgba(245, 177, 111, 0.9),
+    25px 20px 10px rgba(255, 193, 111, 0.5);
+  pointer-events: none;
+  animation: bottom-flower-float 6s ease-in-out infinite alternate;
+}
+/* Cánh hoa bay nhẹ */
+@keyframes bottom-flower-float {
+  from {
+    transform: translateY(0) rotate(-8deg);
+  }
+  to {
+    transform: translateY(-16px) rotate(12deg);
+  }
+}
+
+/* Ánh sáng nhỏ lấp lánh ở đáy */
+.envelope-scene > .fairy-glow {
+  box-shadow:
+    0 60vh 60px -55px rgba(255, 160, 112, 0.16);
+}
+
+/* Không để trang trí cản trở thao tác */
+.envelope-scene::before,
+.envelope-scene::after {
+  pointer-events: none;
+}

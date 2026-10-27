@@ -1,0 +1,424 @@
+
+.memory-intro {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 250px 20px 75px;
+  color: #ffe8d0;
+  background:
+    radial-gradient(ellipse at 50% 42%, #63351f 0%, transparent 58%),
+    linear-gradient(135deg, #160b08, #35180e 55%, #160a07);
+}
+
+.memory-intro *,
+.memory-intro *::before,
+.memory-intro *::after {
+  box-sizing: border-box;
+}
+
+.memory-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 70%, #ffb44d35 0 4px, transparent 35px),
+    radial-gradient(circle at 85% 25%, #ffd08a40 0 5px, transparent 55px),
+    radial-gradient(circle at 50% 80%, #ff8b5330 0 3px, transparent 70px);
+}
+
+/* Hai sợi dây treo ảnh */
+.fairy-string {
+  position: absolute;
+  left: 3%;
+  right: 3%;
+  height: 180px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  border-top: 2px solid #b78b52;
+  filter: drop-shadow(0 0 5px #ffbc61);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.string-one {
+  top: 65px;
+  transform: rotate(2deg);
+}
+
+.string-two {
+  top: 300px;
+  transform: rotate(-2deg);
+}
+
+.fairy-string::before {
+  content: '';
+  position: absolute;
+  inset: -10px 0 auto;
+  height: 22px;
+  background: repeating-radial-gradient(
+    circle,
+    #fff1ae 0 3px,
+    #ffc35a 4px,
+    transparent 7px,
+    transparent 65px
+  );
+  filter: drop-shadow(0 0 8px #ffbf57);
+  pointer-events: none;
+}
+
+/* Ảnh kỷ niệm */
+.memory-photo {
+  position: relative;
+  flex: 0 1 auto;
+  width: clamp(90px, 15vw, 175px);
+  padding: 8px 8px 20px;
+  background: #f6e6ce;
+  box-shadow:
+    0 8px 25px #0008,
+    0 0 12px #ffc36a50;
+  transform: rotate(-4deg);
+  transform-origin: top center;
+  animation: photo-sway 4s ease-in-out infinite alternate;
+  pointer-events: auto;
+}
+
+.memory-photo:nth-child(even) {
+  transform: rotate(4deg);
+  animation-delay: -2s;
+}
+
+.memory-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background: #76503b;
+}
+
+.wooden-clip {
+  position: absolute;
+  top: -20px;
+  left: calc(50% - 7px);
+  width: 14px;
+  height: 35px;
+  border-radius: 3px;
+  background: linear-gradient(
+    90deg,
+    #9b6635,
+    #e6bd80,
+    #996332
+  );
+  box-shadow: 0 2px 5px #0008;
+  z-index: 2;
+}
+
+/* Khu vực tiêu đề ở giữa màn hình */
+.memory-content {
+  position: relative;
+  z-index: 5;
+  width: min(100%, 680px);
+  margin: 20px auto 0;
+  padding: 24px 18px;
+  text-align: center;
+  border-radius: 24px;
+  background: radial-gradient(
+    ellipse at center,
+    #35190ee8 0%,
+    #35190eaa 55%,
+    #35190e00 100%
+  );
+}
+
+.little-heart {
+  color: #ffb6c4;
+  font-size: 22px;
+  letter-spacing: 8px;
+  margin-bottom: 14px;
+  text-shadow: 0 0 15px #ff7f9d;
+}
+
+/* Tiêu đề: giảm cỡ chữ, giữ khoảng cách tự nhiên */
+.memory-content h1 {
+  position: relative;
+  z-index: 6;
+  max-width: 100%;
+  margin: 0;
+  color: #ffe7cd;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(32px, 4.1vw, 52px);
+  line-height: 1.28;
+  letter-spacing: -1px;
+  overflow-wrap: normal;
+  word-break: normal;
+  text-wrap: balance;
+  text-shadow: 0 3px 18px #ffb66a55;
+}
+
+.memory-content h1 span {
+  display: inline-block;
+  color: #ff91ad;
+  white-space: nowrap;
+}
+
+.pink-underline {
+  position: relative;
+  z-index: 6;
+  width: 180px;
+  height: 3px;
+  margin: 18px auto 20px;
+  border-radius: 50%;
+  background: #ff87a6;
+  transform: rotate(-2deg);
+  box-shadow: 0 0 15px #ff799d;
+}
+
+/* Dòng chữ phụ */
+
+.memory-content p {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: 1.6;
+  text-align: center;
+  transform: none;
+}
+
+
+/* Nút mở thư */
+.open-letter-button {
+  position: relative;
+  z-index: 7;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  border: 1px solid #ffb1c0;
+  border-radius: 999px;
+  padding: 16px 28px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: clamp(14px, 1.6vw, 17px);
+  font-weight: 500;
+  line-height: 1.5;
+  background: linear-gradient(135deg, #ff8ba4, #e85f83);
+  box-shadow: 0 0 25px #ff779b85;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.open-letter-button:hover {
+  transform: translateY(-3px) scale(1.025);
+  box-shadow: 0 0 35px #ff779bc9;
+}
+
+.open-letter-button:focus-visible {
+  outline: 3px solid #ffe7cd;
+  outline-offset: 4px;
+}
+
+.memory-footer {
+  position: absolute;
+  z-index: 5;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #e8b995;
+  font-size: 12px;
+  letter-spacing: 3px;
+  pointer-events: none;
+}
+
+@keyframes photo-sway {
+  from {
+    translate: 0 0;
+  }
+
+  to {
+    translate: 0 7px;
+  }
+}
+
+/* Màn hình laptop nhỏ và máy tính bảng */
+@media (max-width: 900px) {
+  .memory-intro {
+    padding-top: 235px;
+  }
+
+  .string-one {
+    top: 55px;
+  }
+
+  .string-two {
+    top: 275px;
+  }
+
+  .memory-photo {
+    width: clamp(85px, 17vw, 145px);
+    padding: 6px 6px 15px;
+  }
+
+  .memory-content {
+    width: min(100%, 620px);
+  }
+
+  .memory-content h1 {
+    font-size: clamp(30px, 5vw, 44px);
+  }
+}
+
+/* Màn hình điện thoại */
+@media (max-width: 600px) {
+  .memory-intro {
+    min-height: 100svh;
+    padding: 240px 10px 65px;
+  }
+
+  .fairy-string {
+    left: 2%;
+    right: 2%;
+    height: 145px;
+  }
+
+  .string-one {
+    top: 48px;
+  }
+
+  .string-two {
+    top: 220px;
+  }
+
+  .memory-photo {
+    width: 27vw;
+    max-width: 120px;
+    min-width: 0;
+    padding: 5px 5px 12px;
+  }
+
+  .memory-photo img {
+    aspect-ratio: 3 / 4;
+  }
+
+  .wooden-clip {
+    top: -15px;
+    left: calc(50% - 5px);
+    width: 10px;
+    height: 26px;
+  }
+
+  .memory-content {
+    width: 100%;
+    margin-top: 0;
+    padding: 18px 8px;
+    border-radius: 18px;
+  }
+
+  .little-heart {
+    font-size: 19px;
+    letter-spacing: 6px;
+    margin-bottom: 12px;
+  }
+
+  .memory-content h1 {
+    font-size: clamp(29px, 7.5vw, 39px);
+    line-height: 1.3;
+    letter-spacing: -0.7px;
+  }
+
+  .pink-underline {
+    width: 135px;
+    margin: 15px auto;
+  }
+
+  .memory-content p {
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 16px 0 24px;
+  }
+
+  .open-letter-button {
+    padding: 13px 17px;
+    font-size: 14px;
+  }
+
+  .memory-footer {
+    bottom: 12px;
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+}
+
+/* Điện thoại rất nhỏ */
+@media (max-width: 380px) {
+  .memory-intro {
+    padding-top: 220px;
+  }
+
+  .string-two {
+    top: 205px;
+  }
+
+  .memory-content h1 {
+    font-size: 28px;
+  }
+
+  .memory-content p {
+    font-size: 14px;
+  }
+
+  .open-letter-button {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+}
+
+/* Hạn chế chuyển động nếu người dùng chọn giảm hiệu ứng */
+@media (prefers-reduced-motion: reduce) {
+  .memory-photo {
+    animation: none;
+  }
+
+  .open-letter-button {
+    transition: none;
+  }
+}
+.memory-content {
+  position: relative;
+  z-index: 100;
+  isolation: isolate;
+}
+
+.memory-content h1,
+.memory-content p,
+.memory-content .little-heart,
+.memory-content .pink-underline,
+.memory-content .open-letter-button {
+  position: relative;
+  z-index: 101;
+}
+
+.fairy-string {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.memory-glow {
+  z-index: 0;
+  pointer-events: none;
+}

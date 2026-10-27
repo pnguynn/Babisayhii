@@ -6,7 +6,7 @@
  * 2. Ngay tại miệng phong thư, 1 đóa hoa rực rỡ nở rộ (scale, xoay, bung cánh và phát sáng).
  * 3. Bức thư từ từ trồi lên từ sau đóa hoa, sau đó chuyển sang chế độ lướt đọc thư mượt mà.
  */
-
+import './Envelope3D.css';
 import React, { useState, useRef, useCallback } from 'react';
 import { Heart, Sparkles } from 'lucide-react';
 import { websiteConfig } from '../../config/websiteConfig';
@@ -101,9 +101,30 @@ export const Envelope3D: React.FC<Envelope3DProps> = ({ onOpenComplete }) => {
   return (
     <div
       ref={containerRef}
-      className="relative flex min-h-[90vh] flex-col items-center justify-center px-4 py-8 select-none"
+      className="envelope-scene relative flex min-h-screen w-full max-w-none flex-col items-center justify-center px-4 py-8 select-none"
     >
+      <div className="fairy-glow" aria-hidden="true" />
       {/* Thông điệp trêu đùa ngọt ngào khi bấm "Chưa" */}
+      
+{/* Ảnh Polaroid trang trí hai góc */}
+<div className="envelope-polaroids" aria-hidden="true">
+  <div className="envelope-polaroid polaroid-left">
+    <img
+      src={`${import.meta.env.BASE_URL}images/memory-left.jpg`}
+      alt=""
+    />
+    <span>Our memories ♡</span>
+  </div>
+
+  <div className="envelope-polaroid polaroid-right">
+    <img
+      src={`${import.meta.env.BASE_URL}images/memory-right.jpg`}
+      alt=""
+    />
+    <span>Forever together ♡</span>
+  </div>
+</div>
+
       {teaseMessage && (
         <div className="fixed top-12 z-50 mx-4 max-w-sm rounded-2xl bg-white/95 px-6 py-3.5 text-center shadow-xl backdrop-blur-md border border-[#F4AFC4] transition-all animate-bounce">
           <p className="text-sm font-medium text-[#704858]">{teaseMessage}</p>
@@ -287,7 +308,7 @@ export const Envelope3D: React.FC<Envelope3DProps> = ({ onOpenComplete }) => {
 
         {stage === 'second_confirm' && (
           <div className="flex w-full flex-col items-center gap-4 animate-fade-in">
-            <p className="text-center font-medium text-[#704858] text-sm sm:text-base">
+            <p className="text-center font-medium text-[#ffe1c7] text-sm sm:text-base drop-shadow-lg">
               {websiteConfig.intro.secondConfirmQuestion}
             </p>
 
