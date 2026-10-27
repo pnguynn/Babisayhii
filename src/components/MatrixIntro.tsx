@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import './MatrixIntro.css';
 
@@ -19,19 +20,23 @@ const symbols = 'HAPPYBIRTHDAYPHUONGTHUY0123456789♡✦';
 export default function MatrixIntro({ onContinue }: MatrixIntroProps) {
   const [phase, setPhase] = useState(0);
 
+  // Chỉ chạy hiệu ứng hiện chữ, không tự chuyển sang trang tiếp theo.
   useEffect(() => {
-    const delays = [1800, 1300, 1200, 1800];
-    if (phase >= 4) {
-      const finishTimer = window.setTimeout(onContinue, 3200);
-      return () => window.clearTimeout(finishTimer);
-    }
-    const timer = window.setTimeout(() => setPhase((current) => current + 1), delays[phase]);
+    const delays = [1800, 1300, 1200];
+
+    if (phase >= 3) return;
+
+    const timer = window.setTimeout(() => {
+      setPhase((current) => current + 1);
+    }, delays[phase]);
+
     return () => window.clearTimeout(timer);
-  }, [phase, onContinue]);
+  }, [phase]);
 
   return (
     <main className="matrix-intro-screen">
       <div className="matrix-vignette" />
+
       <div className="matrix-rain" aria-hidden="true">
         {columns.map((column) => (
           <div
@@ -45,7 +50,10 @@ export default function MatrixIntro({ onContinue }: MatrixIntroProps) {
               opacity: column.opacity,
             }}
           >
-            {Array.from({ length: 22 }, (_, i) => symbols[(column.id * 3 + i * 7) % symbols.length]).join('\n')}
+            {Array.from(
+              { length: 22 },
+              (_, i) => symbols[(column.id * 3 + i * 7) % symbols.length],
+            ).join('\n')}
           </div>
         ))}
       </div>
@@ -85,3 +93,4 @@ export default function MatrixIntro({ onContinue }: MatrixIntroProps) {
     </main>
   );
 }
+```
