@@ -111,7 +111,7 @@ export default function App() {
 
             <PolaroidCard
               image={`${import.meta.env.BASE_URL}images/p17.jpg`}
-              date="2024.10.25 ✨"
+              date="03.04.2026 ✨"
               message="Anh yêu Em 💕"
               alt="Ảnh kỷ niệm của chúng mình"
             />
