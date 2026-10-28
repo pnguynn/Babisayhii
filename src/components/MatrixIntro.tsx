@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import './MatrixIntro.css';
-
+import { audioController } from '../utils/audioPlayer';
 type MatrixIntroProps = {
   onContinue: () => void;
 };
@@ -81,12 +81,15 @@ export default function MatrixIntro({ onContinue }: MatrixIntroProps) {
         </p>
 
         <button
-          className={`matrix-enter-button ${phase >= 3 ? 'is-visible' : ''}`}
-          onClick={onContinue}
-          type="button"
-        >
-          VÀO KỶ NIỆM <span aria-hidden="true">→</span>
-        </button>
+  className={`matrix-enter-button ${phase >= 3 ? 'is-visible' : ''}`}
+  onClick={() => {
+    void audioController.play();
+    onContinue();
+  }}
+  type="button"
+>
+  VÀO KỶ NIỆM <span aria-hidden="true">→</span>
+</button>
       </section>
 
       <p className="matrix-footer">MADE WITH LOVE · 29 NOVEMBER</p>
