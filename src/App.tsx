@@ -3,6 +3,8 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
+import { useEffect } from 'react';
+import { audioController } from './utils/audioPlayer';
 import React, { useState } from 'react';
 import PhotoMemoryIntro from './components/PhotoMemoryIntro';
 import MatrixIntro from './components/MatrixIntro';
@@ -25,6 +27,9 @@ type AppFlowState =
   | 'ending_vortex';
 
 export default function App() {
+  useEffect(() => {
+  void audioController.play();
+}, []);
   const [flowState, setFlowState] =
     useState<AppFlowState>('matrix');
 
