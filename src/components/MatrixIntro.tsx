@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import './MatrixIntro.css';
 import { audioController } from '../utils/audioPlayer';
+
 type MatrixIntroProps = {
   onContinue: () => void;
 };
@@ -15,12 +16,22 @@ const columns = Array.from({ length: 54 }, (_, index) => ({
   opacity: 0.35 + ((index * 11) % 60) / 100,
 }));
 
-const symbols = 'HAPPYBIRTHDAYPHUONGTHUY0123456789♡✦';
+// Hai chuỗi dùng cho hiệu ứng mưa Matrix.
+const matrixMessages = ['PHUONGTHUY29102003', 'BABISAYHI'];
+
+// Mỗi cột lặp lại một chuỗi theo đúng thứ tự để mưa Matrix chạy liên tục.
+const matrixColumns = columns.map((column) => {
+  const message = matrixMessages[column.id % matrixMessages.length];
+  return {
+    ...column,
+    characters: message.split(''),
+  };
+});
 
 export default function MatrixIntro({ onContinue }: MatrixIntroProps) {
   const [phase, setPhase] = useState(0);
 
-  // Chỉ chạy hiệu ứng hiện chữ, không tự chuyển sang trang tiếp theo.
+  // Hiện nội dung lần lượt; không tự chuyển sang trang tiếp theo.
   useEffect(() => {
     const delays = [1800, 1300, 1200];
 
@@ -38,7 +49,7 @@ export default function MatrixIntro({ onContinue }: MatrixIntroProps) {
       <div className="matrix-vignette" />
 
       <div className="matrix-rain" aria-hidden="true">
-        {columns.map((column) => (
+        {matrixColumns.map((column) => (
           <div
             className="matrix-rain-column"
             key={column.id}
@@ -50,10 +61,12 @@ export default function MatrixIntro({ onContinue }: MatrixIntroProps) {
               opacity: column.opacity,
             }}
           >
-            {Array.from(
-              { length: 22 },
-              (_, i) => symbols[(column.id * 3 + i * 7) % symbols.length],
-            ).join('\n')}
+            {Array.from({ length: 22 }, (_, i) => (
+              <span key={i}>
+                {column.characters[i % column.characters.length]}
+                {i < 21 ? '\n' : ''}
+              </span>
+            ))}
           </div>
         ))}
       </div>
@@ -64,11 +77,11 @@ export default function MatrixIntro({ onContinue }: MatrixIntroProps) {
         </p>
 
         <h1 className={`matrix-name ${phase >= 1 ? 'is-visible' : ''}`}>
-          Phương Thuỳ
+          Phương Thùy
         </h1>
 
         <p className={`matrix-date ${phase >= 2 ? 'is-visible' : ''}`}>
-          29.11.03
+          29.10.03
         </p>
 
         <div className={`matrix-birthday ${phase >= 3 ? 'is-visible' : ''}`}>
@@ -81,18 +94,18 @@ export default function MatrixIntro({ onContinue }: MatrixIntroProps) {
         </p>
 
         <button
-  className={`matrix-enter-button ${phase >= 3 ? 'is-visible' : ''}`}
-  onClick={() => {
-    void audioController.play();
-    onContinue();
-  }}
-  type="button"
->
-  VÀO KỶ NIỆM <span aria-hidden="true">→</span>
-</button>
+          className={`matrix-enter-button ${phase >= 3 ? 'is-visible' : ''}`}
+          onClick={() => {
+            void audioController.play();
+            onContinue();
+          }}
+          type="button"
+        >
+          VÀO KỶ NIỆM <span aria-hidden="true">→</span>
+        </button>
       </section>
 
-      <p className="matrix-footer">MADE WITH LOVE · 29 NOVEMBER</p>
+      <p className="matrix-footer">MADE WITH LOVE · BABISAYHI</p>
     </main>
   );
 }
