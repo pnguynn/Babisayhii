@@ -48,7 +48,7 @@ export default function App() {
 
   // Khởi động lại từ màn hình dây ảnh
   const handleRestart = () => {
-    setFlowState('intro');
+    setFlowState('matrix');
     setSelectedMedia(null);
   };
 
@@ -67,8 +67,12 @@ export default function App() {
 
       {/* TRANG MỞ ĐẦU MATRIX: TÊN, NGÀY SINH VÀ HAPPY 23+ */}
       {flowState === 'matrix' && (
-        <MatrixIntro onContinue={() => setFlowState('intro')} />
-      )}
+  <MatrixIntro
+    onContinue={() => {
+      setFlowState('intro');
+    }}
+  />
+)}
 
       {/* MÀN HÌNH ĐẦU TIÊN: DÂY ẢNH VÀ ĐÈN VÀNG */}
       {flowState === 'intro' && (
